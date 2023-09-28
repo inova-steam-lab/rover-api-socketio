@@ -4,6 +4,16 @@ Estrutura base para utilização de WebSocket utilizando FastAPI com a Labrador.
 
 # Comece por aqui
 
+## Obtendo o projeto
+
+### Via git clone
+- Através do seu terminal, escolha um diretório onde você deseja colocar o projeto;
+- Rode o comando: `git clone https://github.com/zNexTage/rover-socketio.git`;
+
+### Através da interface do GitHub
+- Clique em `<> code`;
+- Clique em `Download Zip`;
+
 ## Criação de ambiente virtual (opcional)
 Caso você não queira instalar as libs em seu computador, crie um ambiente virtual utilizando o Python para evitar que isso ocorra!
 - Abra o terminal na pasta onde está o projeto;
