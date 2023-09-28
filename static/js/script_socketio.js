@@ -2,6 +2,14 @@ const url = "http://localhost:8000";
 
 const socket = io(url);
 
+/**
+ * Obtém as divs referente as teclas W, S, A e D.
+ */
+const keyWDiv = document.getElementById("key-w");
+const keySDiv = document.getElementById("key-s");
+const keyADiv = document.getElementById("key-a");
+const keyDDiv = document.getElementById("key-d");
+
 /**************
  * Emitters de movimento do hover! Todas as vezes que uma tecla é pressionada é emitido um evento no 
  * servidor.
@@ -13,6 +21,9 @@ const socket = io(url);
  */
 const onWPress = () => {
     socket.emit("move_forward", null);
+
+    // Altera a cor da tecla W para demonstrar que ela está sendo pressionada
+    keyWDiv.classList.add("key-button-dark-gray");
 }
 
 /**
@@ -21,6 +32,9 @@ const onWPress = () => {
  */
 const onSPress = () => {
     socket.emit("move_backward", null);
+
+    // Altera a cor da tecla S para demonstrar que ela está sendo pressionada    
+    keySDiv.classList.add("key-button-dark-gray");
 }
 
 /**
@@ -29,6 +43,9 @@ const onSPress = () => {
  */
 const onAPress = () => {
     socket.emit("move_left", null);
+
+    // Altera a cor da tecla A para demonstrar que ela está sendo pressionada
+    keyADiv.classList.add("key-button-dark-gray");
 }
 
 /**
@@ -37,6 +54,9 @@ const onAPress = () => {
  */
 const onDPress = () => {
     socket.emit("move_right", null);
+
+    // Altera a cor da tecla D para demonstrar que ela está sendo pressionada
+    keyDDiv.classList.add("key-button-dark-gray");
 }
 
 /**
@@ -58,6 +78,12 @@ document.addEventListener("keypress", event => {
  */
 document.addEventListener("keyup", event => {
     socket.emit("stop", null);
+
+    // Retorna a cor original das teclas após solta-lá.
+    keyWDiv.classList.remove("key-button-dark-gray");
+    keySDiv.classList.remove("key-button-dark-gray");
+    keyADiv.classList.remove("key-button-dark-gray");
+    keyDDiv.classList.remove("key-button-dark-gray");
 });
 
 /**************
@@ -76,5 +102,5 @@ socket.on("hover_status", data => {
     txtLogMoviment.value = `${currentValue}\n${data.message}`;
 
     // Realiza o scroll do textarea para que ele sempre demonstre as mensagens mais recentes.
-    txtLogMoviment.scrollTop = txtLogMoviment.scrollHeight;
+    txtLogMoviment.scrollTop = txtLogMoviment.scrollHeight;        
 });
