@@ -1,6 +1,6 @@
 # Rover SocketIO
 
-Estrutura base para utilização de WebSocket utilizando FastAPI com a Labrador.
+Interface Web para interação com o Rover (labrador) através de WebSockets.
 
 # Comece por aqui
 
