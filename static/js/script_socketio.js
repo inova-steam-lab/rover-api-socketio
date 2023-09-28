@@ -59,3 +59,22 @@ document.addEventListener("keypress", event => {
 document.addEventListener("keyup", event => {
     socket.emit("stop", null);
 });
+
+/**************
+ * Listeners de eventos enviados pelo servidor.
+ *************/
+
+/**
+ * hover_status é emitido pelo servidor todas as vezes que o hover realiza uma ação.  
+ */
+socket.on("hover_status", data => {
+    const txtLogMoviment = document.getElementById("txtLogHoverMovment");
+
+    const currentValue = txtLogMoviment.value;
+
+    // Concatena o valor atual do campo texto com o status enviado pelo servidor.
+    txtLogMoviment.value = `${currentValue}\n${data.message}`;
+
+    // Realiza o scroll do textarea para que ele sempre demonstre as mensagens mais recentes.
+    txtLogMoviment.scrollTop = txtLogMoviment.scrollHeight;
+});
