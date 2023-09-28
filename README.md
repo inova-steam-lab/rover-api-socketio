@@ -11,7 +11,8 @@ Interface Web para interação com o Rover (labrador) através de WebSockets.
 - Rode o comando: `git clone https://github.com/zNexTage/rover-socketio.git`;
 
 ### Através da interface do GitHub
-- Clique em `<> code`;
+- Na página do projeto: https://github.com/zNexTage/rover-socketio/tree/main;
+- Procure e clique em `<> code`;
 - Clique em `Download Zip`;
 
 ## Criação de ambiente virtual (opcional)
