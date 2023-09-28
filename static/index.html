@@ -51,11 +51,11 @@
         }
 
         const onAPress = () => {
-            socket.emit("move_forward", null);
-        }
-
-        const onDPress = () => {
             socket.emit("move_left", null);
+        }
+        
+        const onDPress = () => {
+            socket.emit("move_right", null);
         }
 
         document.addEventListener("keypress", event => {
