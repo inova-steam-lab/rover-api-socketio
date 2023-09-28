@@ -18,7 +18,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 def index():
-    ''' Página inicial que será utilizada para controlar o Hover. '''
+    ''' Página inicial que será utilizada para controlar o Rover. '''
     return FileResponse('static/index.html')
 
 
@@ -33,7 +33,7 @@ async def move_forward(sid, data):
 
     rover.go_forward()
 
-    await socket.emit("hover_status", data={'message': '[Hover] - Movendo...'})
+    await socket.emit("rover_status", data={'message': '[Rover] - Movendo...'})
 
 
 @socket.event
@@ -42,7 +42,7 @@ async def move_backward(sid, data):
 
     rover.go_backward()
 
-    await socket.emit("hover_status", data={'message': '[Hover] - Retrocedendo...'})
+    await socket.emit("rover_status", data={'message': '[Rover] - Retrocedendo...'})
 
 
 @socket.event
@@ -51,8 +51,8 @@ async def move_left(sid, data):
 
     rover.go_left()
 
-    await socket.emit("hover_status", data={
-        'message': '[Hover] - Movendo para esquerda...'})
+    await socket.emit("rover_status", data={
+        'message': '[Rover] - Movendo para esquerda...'})
 
 
 @socket.event
@@ -61,8 +61,8 @@ async def move_right(sid, data):
 
     rover.go_right()
 
-    await socket.emit("hover_status", data={
-        'message': '[Hover] - Movendo para direita...'})
+    await socket.emit("rover_status", data={
+        'message': '[Rover] - Movendo para direita...'})
 
 
 @socket.event
@@ -71,4 +71,4 @@ async def stop(sid, data):
 
     rover.stop()
 
-    await socket.emit("hover_status", data={'message': '[Hover] - Parando...'})
+    await socket.emit("rover_status", data={'message': '[Rover] - Parando...'})

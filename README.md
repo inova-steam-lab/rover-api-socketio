@@ -1,4 +1,4 @@
-# Hover SocketIO
+# Rover SocketIO
 
 Estrutura base para utilização de WebSocket utilizando FastAPI com a Labrador.
 
@@ -23,9 +23,9 @@ Caso você não queira instalar as libs em seu computador, crie um ambiente virt
 - Acesse: http://127.0.0.1:8000/ ou http://localhost:8000/
 
 # Conhecendo algumas partes do projeto
-- `main.py` -> Aqui está localizado a configuração do servidor. É nesse arquivo onde está definido os listeners do `socket`. As movimentações do hover serão feitas nesse arquivo.
+- `main.py` -> Aqui está localizado a configuração do servidor. É nesse arquivo onde está definido os listeners do `socket`. As movimentações do Rover serão feitas nesse arquivo.
 - `index.html` -> Apenas uma interface web para interagir com o servidor.
-- `static/js/script_socketio.js` -> Através da interação do usuário na página web (http://127.0.0.1:8000/), esse script é responsável por emitir os eventos para o servidor, isto é, através da interação nessa página que o hover é controlado.
+- `static/js/script_socketio.js` -> Através da interação do usuário na página web (http://127.0.0.1:8000/), esse script é responsável por emitir os eventos para o servidor, isto é, através da interação nessa página que o Rover é controlado.
 
 # Referências
 - https://www.reddit.com/r/FastAPI/comments/neds9c/integrate_socketio_with_fastapi/;

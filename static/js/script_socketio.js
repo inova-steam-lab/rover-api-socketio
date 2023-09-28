@@ -11,7 +11,7 @@ const keyADiv = document.getElementById("key-a");
 const keyDDiv = document.getElementById("key-d");
 
 /**************
- * Emitters de movimento do hover! Todas as vezes que uma tecla é pressionada é emitido um evento no 
+ * Emitters de movimento do Rover! Todas as vezes que uma tecla é pressionada é emitido um evento no 
  * servidor.
  **************/
 
@@ -91,9 +91,9 @@ document.addEventListener("keyup", event => {
  *************/
 
 /**
- * hover_status é emitido pelo servidor todas as vezes que o hover realiza uma ação.  
+ * rover_status é emitido pelo servidor todas as vezes que o Rover realiza uma ação.  
  */
-socket.on("hover_status", data => {
+socket.on("rover_status", data => {
     const txtLogMoviment = document.getElementById("txtLogHoverMovment");
 
     const currentValue = txtLogMoviment.value;
