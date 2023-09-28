@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="pt">
 
 <head>
     <meta charset="UTF-8">
@@ -35,40 +35,7 @@
         integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
         crossorigin="anonymous"></script>
 
-    <script src="static/js/script.js"></script>
-
-    <script>
-        const url = "http://localhost:8000";
-
-        const socket = io(url);
-
-        const onWPress = () => {
-            socket.emit("move_forward", null);
-        }
-
-        const onSPress = () => {
-            socket.emit("move_backward", null);
-        }
-
-        const onAPress = () => {
-            socket.emit("move_left", null);
-        }
-        
-        const onDPress = () => {
-            socket.emit("move_right", null);
-        }
-
-        document.addEventListener("keypress", event => {
-            const keyPressed = event.key;
-
-            switch (keyPressed) {
-                case 'w': onWPress(); break;
-                case 's': onSPress(); break;
-                case 'a': onAPress(); break;
-                case 'd': onDPress(); break;
-            };
-        })
-    </script>
+    <script src="static/js/script_socketio.js"></script>
 </body>
 
 </html>
