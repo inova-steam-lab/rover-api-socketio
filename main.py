@@ -23,3 +23,19 @@ def index():
 @socket.event
 def connect(sid, environ):
     print("connect ", sid)
+
+@socket.event
+def move_forward(sid, data):
+    print("Movendo...")
+
+@socket.event
+def move_backward(sid, data):
+    print("Retrocedendo...")
+
+@socket.event
+def move_left(sid, data):
+    print("Movendo para esquerda...")
+
+@socket.event
+def move_right(sid, data):
+    print("Movendo para direita...")
