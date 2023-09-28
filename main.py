@@ -39,3 +39,7 @@ def move_left(sid, data):
 @socket.event
 def move_right(sid, data):
     print("Movendo para direita...")
+
+@socket.event
+def stop(sid, data):
+    print("Parando...")

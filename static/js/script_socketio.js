@@ -36,13 +36,23 @@ const onDPress = () => {
     socket.emit("move_right", null);
 }
 
+/**
+ * Listener para evento keypress. Será chamado sempre quando o usuário pressionar uma tecla.
+ */
 document.addEventListener("keypress", event => {
     const keyPressed = event.key;
 
-    switch (keyPressed) {
+    switch (keyPressed) { 
         case 'w': onWPress(); break;
         case 's': onSPress(); break;
         case 'a': onAPress(); break;
         case 'd': onDPress(); break;
     };
-})
+});
+
+/**
+ * Listener para evento keydown. Será chamado sempre quando o usuário soltar uma tecla.
+ */
+document.addEventListener("keyup", event => {
+    socket.emit("stop", null);
+});
