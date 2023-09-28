@@ -2,7 +2,10 @@ const url = "http://localhost:8000";
 
 const socket = io(url);
 
-// Listeners de movimento do hover!!
+/**************
+ * Emitters de movimento do hover! Todas as vezes que uma tecla é pressionada é emitido um evento no 
+ * servidor.
+ **************/
 
 /**
  * Invoca o evento `move_forward` que foi declarado no servidor quando o usuário
