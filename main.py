@@ -4,6 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import socketio
 import rover
+import logging
 
 
 app = FastAPI()
@@ -34,12 +35,12 @@ def index():
 
 @socket.event
 def connect(sid, environ):
-    print("connect ", sid)
+    logging.info(f"Usuário conectado - {sid}")
 
 
 @socket.event
 async def move_forward(sid, data):
-    print("Movendo...")
+    logging.info("Movendo...")
 
     rover.go_forward()
 
@@ -48,7 +49,7 @@ async def move_forward(sid, data):
 
 @socket.event
 async def move_backward(sid, data):
-    print("Retrocedendo...")
+    logging.info("Retrocedendo...")
 
     rover.go_backward()
 
@@ -57,7 +58,7 @@ async def move_backward(sid, data):
 
 @socket.event
 async def move_left(sid, data):
-    print("Movendo para esquerda...")
+    logging.info("Movendo para esquerda...")
 
     rover.go_left()
 
@@ -67,7 +68,7 @@ async def move_left(sid, data):
 
 @socket.event
 async def move_right(sid, data):
-    print("Movendo para direita...")
+    logging.info("Movendo para direita...")
 
     rover.go_right()
 
@@ -77,7 +78,7 @@ async def move_right(sid, data):
 
 @socket.event
 async def stop(sid, data):
-    print("Parando...")
+    logging.info("Parando...")
 
     rover.stop()
 
