@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 import socketio
 import rover
 
@@ -14,6 +15,15 @@ socketio_app = socketio.ASGIApp(socket, app)
 
 # Serve os arquivos que estão na pasta /static
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
+# Configuração de CORS; Permite a comunicação entre diferentes domínios
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
