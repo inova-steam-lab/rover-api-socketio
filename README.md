@@ -39,6 +39,16 @@ Caso você não queira instalar as libs em seu computador, crie um ambiente virt
 - `index.html` -> Apenas uma interface web para interagir com o servidor.
 - `static/js/script_socketio.js` -> Através da interação do usuário na página web (http://127.0.0.1:8000/), esse script é responsável por emitir os eventos para o servidor, isto é, através da interação nessa página que o Rover é controlado.
 
+# Problemas identificados na labrador
+
+## Pip não localizado
+Caso a labrador não reconheça o comando: `pip`, rode os seguintes comandos no terminal:
+  - `sudo apt clean`;
+  - `sudo apt update`;
+  - `sudo apt install --fix-missing`;
+  - `sudo apt -y upgrade`;
+  - `sudo apt-get install python3-venv`;
+
 # Referências
 - https://www.reddit.com/r/FastAPI/comments/neds9c/integrate_socketio_with_fastapi/;
 - https://python-socketio.readthedocs.io/en/latest/intro.html;
