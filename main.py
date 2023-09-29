@@ -6,6 +6,12 @@ import socketio
 import rover
 import logging
 
+logging.basicConfig(
+    level="INFO",
+    format="%(asctime)s.%(msecs)03d %(levelname)-8s %(message)s",
+    datefmt="[%Y-%m-%d,%H:%M:%S]",
+)
+
 
 app = FastAPI()
 
