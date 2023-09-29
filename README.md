@@ -4,6 +4,15 @@ Interface Web para interação com o Rover (labrador) através de WebSockets.
 
 # Comece por aqui
 
+## Anote o IP da sua Labrador
+O IP da sua labrador será necessário para realizar a configuração da comunicação.
+- Abra seu terminal;
+- Digite: `ip a | grep -oE 'inet [0-9.]+'`;
+  - Idealmente o retorno desse comando será:
+      `inet 127.0.0.1
+       inet 192.168.1.6`
+  - Anote a segunda opção.
+
 ## Obtendo o projeto
 
 ### Via git clone
@@ -28,12 +37,19 @@ Caso você não queira instalar as libs em seu computador, crie um ambiente virt
 - Abra o terminal na pasta onde está o projeto;
 - Rode o comando: `pip install -r requirements.txt`;
 
-# Como rodar a aplicação?
+## Configuração comunicação SocketIO Javascript com API
+Para que a interface funcione corretamente, é preciso colocar o IP da sua labrador no `script_socketio.js`;
+- Abra o arquivo `script_socketio.js`;
+- Procure pela linha `const url = "http://192.168.1.6:8000/";`;
+- Altere `http://192.168.1.6:8000/` para o **IP da sua labrador**.
+  - `const url = "http://<IP-DA-SUA-LABRADOR>:8000/";`
+
+## Como rodar a aplicação?
 - Abra o terminal na pasta onde está o projeto;
 - Rode o comando: `uvicorn main:socketio_app --reload --host 0.0.0.0`;
 - Acesse: http://127.0.0.1:8000/ ou http://localhost:8000/ ou http://<IP-DA-LABRADOR>:8000/
 
-# Conhecendo algumas partes do projeto
+## Conhecendo algumas partes do projeto
 - `main.py` -> Aqui está localizado a configuração do servidor. É nesse arquivo onde está definido os listeners do `socket`, isto é, as funções que possibilitam movimentar o rover.
 - `rover.py` -> Configuração PWM e dos pinos da labrador. Além disso, nesse arquivo está as funções que movimentam o hover;
 - `index.html` -> Apenas uma interface web para interagir com o servidor.
