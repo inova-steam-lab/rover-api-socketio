@@ -42,7 +42,7 @@ def connect(sid, environ):
 async def move_forward(sid, data):
     logging.info("Movendo...")
 
-    rover.go_forward()
+    #rover.go_forward()
 
     await socket.emit("rover_status", data={'message': '[Rover] - Movendo...'})
 
@@ -51,7 +51,7 @@ async def move_forward(sid, data):
 async def move_backward(sid, data):
     logging.info("Retrocedendo...")
 
-    rover.go_backward()
+    #rover.go_backward()
 
     await socket.emit("rover_status", data={'message': '[Rover] - Retrocedendo...'})
 
@@ -60,7 +60,7 @@ async def move_backward(sid, data):
 async def move_left(sid, data):
     logging.info("Movendo para esquerda...")
 
-    rover.go_left()
+    #rover.go_left()
 
     await socket.emit("rover_status", data={
         'message': '[Rover] - Movendo para esquerda...'})
@@ -70,7 +70,7 @@ async def move_left(sid, data):
 async def move_right(sid, data):
     logging.info("Movendo para direita...")
 
-    rover.go_right()
+    #rover.go_right()
 
     await socket.emit("rover_status", data={
         'message': '[Rover] - Movendo para direita...'})
@@ -80,6 +80,6 @@ async def move_right(sid, data):
 async def stop(sid, data):
     logging.info("Parando...")
 
-    rover.stop()
+    #rover.stop()
 
     await socket.emit("rover_status", data={'message': '[Rover] - Parando...'})
