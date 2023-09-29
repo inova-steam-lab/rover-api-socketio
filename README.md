@@ -30,8 +30,8 @@ Caso você não queira instalar as libs em seu computador, crie um ambiente virt
 
 # Como rodar a aplicação?
 - Abra o terminal na pasta onde está o projeto;
-- Rode o comando: `uvicorn main:socketio_app --reload`;
-- Acesse: http://127.0.0.1:8000/ ou http://localhost:8000/
+- Rode o comando: `uvicorn main:socketio_app --reload --host 0.0.0.0`;
+- Acesse: http://127.0.0.1:8000/ ou http://localhost:8000/ ou http://<IP-DA-LABRADOR>:8000/
 
 # Conhecendo algumas partes do projeto
 - `main.py` -> Aqui está localizado a configuração do servidor. É nesse arquivo onde está definido os listeners do `socket`, isto é, as funções que possibilitam movimentar o rover.
