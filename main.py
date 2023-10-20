@@ -3,8 +3,14 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import socketio
-#import rover
+import logging
+import rover
 
+logging.basicConfig(
+    level="INFO",
+    format="%(asctime)s.%(msecs)03d %(levelname)-8s %(message)s",
+    datefmt="[%Y-%m-%d,%H:%M:%S]",
+)
 
 app = FastAPI()
 
@@ -26,6 +32,11 @@ app.add_middleware(
 )
 
 
+# Vamos utilizar um estado para verificar se o carrinho está se movendo ou não
+# FIXME: Utilizar outro mecanismo para armazenar o estado do carrinho.
+app.is_moving = False
+
+
 @app.get("/")
 def index():
     ''' Página inicial que será utilizada para controlar o Rover. '''
@@ -34,32 +45,38 @@ def index():
 
 @socket.event
 def connect(sid, environ):
-    print("connect ", sid)
+    logging.info(f"Usuário conectado - {sid}")
 
 
 @socket.event
 async def move_forward(sid, data):
-    print("Movendo...")
+    logging.info("Movendo...")
 
-    #rover.go_forward()
+    if not app.is_moving:
+        rover.go_forward()        
+        app.is_moving = True
 
     await socket.emit("rover_status", data={'message': '[Rover] - Movendo...'})
 
 
 @socket.event
 async def move_backward(sid, data):
-    print("Retrocedendo...")
-
-    #rover.go_backward()
+    logging.info("Retrocedendo...")
+    
+    if not app.is_moving:
+        rover.go_backward()
+        app.is_moving = True
 
     await socket.emit("rover_status", data={'message': '[Rover] - Retrocedendo...'})
 
 
 @socket.event
 async def move_left(sid, data):
-    print("Movendo para esquerda...")
+    logging.info("Movendo para esquerda...")
 
-    #rover.go_left()
+    if not app.is_moving:
+        rover.go_left()
+        app.is_moving = True
 
     await socket.emit("rover_status", data={
         'message': '[Rover] - Movendo para esquerda...'})
@@ -67,9 +84,11 @@ async def move_left(sid, data):
 
 @socket.event
 async def move_right(sid, data):
-    print("Movendo para direita...")
-
-    #rover.go_right()
+    logging.info("Movendo para direita...")
+    
+    if not app.is_moving:
+        rover.go_right()
+        app.is_moving = True
 
     await socket.emit("rover_status", data={
         'message': '[Rover] - Movendo para direita...'})
@@ -77,8 +96,10 @@ async def move_right(sid, data):
 
 @socket.event
 async def stop(sid, data):
-    print("Parando...")
-
-    #rover.stop()
+    logging.info("Parando...")
+    
+    if app.is_moving:
+        rover.stop()       
+        app.is_moving = False
 
     await socket.emit("rover_status", data={'message': '[Rover] - Parando...'})
