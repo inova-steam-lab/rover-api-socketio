@@ -1,5 +1,5 @@
 // utilizar o IP da labrador
-const url = "http://192.168.1.6:80/";
+const url = "http://localhost:8000/";
 
 const socket = io(url);
 
