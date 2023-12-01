@@ -69,3 +69,5 @@ Caso a labrador não reconheça o comando: `pip`, rode os seguintes comandos no 
 - https://www.reddit.com/r/FastAPI/comments/neds9c/integrate_socketio_with_fastapi/;
 - https://python-socketio.readthedocs.io/en/latest/intro.html;
 - https://fastapi.tiangolo.com/
+- https://stackoverflow.com/questions/73335010/how-to-set-fastapi-websocket-properly-with-nginx
+- https://dylancastillo.co/fastapi-nginx-gunicorn/#tech-stack
