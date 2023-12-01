@@ -31,12 +31,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# Vamos utilizar um estado para verificar se o carrinho está se movendo ou não
-# FIXME: Utilizar outro mecanismo para armazenar o estado do carrinho.
-app.is_moving = False
-
-
 @app.get("/")
 def index():
     ''' Página inicial que será utilizada para controlar o Rover. '''
@@ -52,10 +46,10 @@ def connect(sid, environ):
 async def move_forward(sid, data):
     logging.info("Movendo...")
 
-    if not app.is_moving:
-        rover.go_forward()        
-        app.is_moving = True
+    # Invoca o método rover_move_forward no carrinho para que ele mova para frente.
+    await socket.emit("rover_move_forward", {})
 
+    # Invoca o método rover_status no navegador para indicar que o carrinho está se movendo
     await socket.emit("rover_status", data={'message': '[Rover] - Movendo...'})
 
 
@@ -63,10 +57,10 @@ async def move_forward(sid, data):
 async def move_backward(sid, data):
     logging.info("Retrocedendo...")
     
-    if not app.is_moving:
-        rover.go_backward()
-        app.is_moving = True
+    # Invoca o método rover_move_forward no carrinho para que ele retroceda
+    await socket.emit("rover_move_backward", {})
 
+    # Invoca o método rover_status no navegador para indicar que o carrinho está se movendo
     await socket.emit("rover_status", data={'message': '[Rover] - Retrocedendo...'})
 
 
@@ -74,10 +68,10 @@ async def move_backward(sid, data):
 async def move_left(sid, data):
     logging.info("Movendo para esquerda...")
 
-    if not app.is_moving:
-        rover.go_left()
-        app.is_moving = True
+    # Invoca o método rover_move_left no carrinho para que ele vire para esquerda
+    await socket.emit("rover_move_left", {})
 
+    # Invoca o método rover_status no navegador para indicar que o carrinho está se movendo
     await socket.emit("rover_status", data={
         'message': '[Rover] - Movendo para esquerda...'})
 
@@ -86,10 +80,10 @@ async def move_left(sid, data):
 async def move_right(sid, data):
     logging.info("Movendo para direita...")
     
-    if not app.is_moving:
-        rover.go_right()
-        app.is_moving = True
+    # Invoca o método rover_move_right no carrinho para que ele vire para direita
+    await socket.emit("rover_move_right", {})
 
+    # Invoca o método rover_status no navegador para indicar que o carrinho está se movendo
     await socket.emit("rover_status", data={
         'message': '[Rover] - Movendo para direita...'})
 
@@ -98,8 +92,8 @@ async def move_right(sid, data):
 async def stop(sid, data):
     logging.info("Parando...")
     
-    if app.is_moving:
-        rover.stop()       
-        app.is_moving = False
+    # Invoca o método rover_stop no carrinho para que pare
+    await socket.emit("rover_stop", {})
 
+    # Invoca o método rover_status no navegador para indicar que o carrinho está parando
     await socket.emit("rover_status", data={'message': '[Rover] - Parando...'})
