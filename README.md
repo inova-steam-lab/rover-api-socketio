@@ -1,6 +1,6 @@
 # Rover SocketIO
 
-Interface Web para interação com o Rover (labrador) através de WebSockets.
+API em tempo real que atua escutando os eventos enviados pelo usuário através do navegador. Através de uma página web que a API disponibiliza, um usuário poderá emitir comandos, como pressionar as teclas: W, A, S e D, para controlar o rover. A API se encarrega de escutar esses eventos e de disparar outros eventos que são executados na placa Labrador que interagem diretamente com as portas PWM para que o rover possa se movimentar (a interação com as portas PWM são realizadas no projeto [https://github.com/labrador-rover/rover-remote-control](rover-remote-control)).
 
 # Comece por aqui
 
