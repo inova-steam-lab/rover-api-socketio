@@ -4,7 +4,6 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 import socketio
 import logging
-import rover
 
 logging.basicConfig(
     level="INFO",
